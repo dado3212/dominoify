@@ -1,6 +1,356 @@
 <html>
 	<head>
+		<title>Domino-ify</title>
+		<style>
+		/*
+		html {
+	font-size: 100px;
+}
+
+.domino {
+  background-color: black;
+  width: 1em;
+  height: 2em;
+  position: relative;
+  
+  margin: 1px;
+  
+  .first, .second {
+  	width: 1em;
+  	height: 1em;
+  	position: absolute;
+  	border: 1px solid white;
+  }
+  
+  &.vertical {
+    width: 1em;
+	  height: 2em;
+	
+    .second {
+      top: 1em;
+    }
+  }
+  
+  &.horizontal {
+    width: 2em;
+	  height: 1em;
+	
+    .second {
+      left: 1em;
+    }
+  }
+  
+  &.horizontal .second {
+    left: 1em;
+  }
+  
+  &.horizontal {
+    &.first-two .first {
+      .pip.two, .pip.eight { opacity: 1; }
+    }
+    
+    &.first-three .first {
+      .pip.three, .pip.five, .pip.seven { opacity: 1; }
+    }
+    
+    &.first-six .first {
+      .pip.one, .pip.two, .pip.three, .pip.seven, .pip.eight, .pip.nine { opacity: 1; }
+    }
+    
+    &.second-two .second {
+      .pip.two, .pip.eight { opacity: 1; }
+    }
+    
+    &.second-three .second {
+      .pip.three, .pip.five, .pip.seven { opacity: 1; }
+    }
+    
+    &.second-six .second {
+      .pip.one, .pip.two, .pip.three, .pip.seven, .pip.eight, .pip.nine { opacity: 1; }
+    }
+  }
+  
+  &.vertical {
+    &.first-two .first {
+      .pip.four, .pip.six { opacity: 1; }
+    }
+    
+    &.first-three .first {
+      .pip.one, .pip.five, .pip.nine { opacity: 1; }
+    }
+    
+    &.first-six .first {
+      .pip.one, .pip.three, .pip.four, .pip.six, .pip.seven, .pip.nine { opacity: 1; }
+    }
+    
+    &.second-two .second {
+      .pip.four, .pip.six { opacity: 1; }
+    }
+    
+    &.second-three .second {
+      .pip.one, .pip.five, .pip.nine { opacity: 1; }
+    }
+    
+    &.second-six .second {
+      .pip.one, .pip.three, .pip.four, .pip.six, .pip.seven, .pip.nine { opacity: 1; }
+    }
+  }
+  
+  &.first-one .first {
+    .pip.five { opacity: 1; }
+  }
+      
+  &.first-four .first {
+    .pip.one, .pip.three, .pip.seven, .pip.nine { opacity: 1; }
+  }
+
+  &.first-five .first {
+    .pip.one, .pip.three, .pip.five, .pip.seven, .pip.nine { opacity: 1; }
+  }
+
+  &.second-one .second {
+    .pip.five { opacity: 1; }
+  }
+      
+  &.second-four .second {
+    .pip.one, .pip.three, .pip.seven, .pip.nine { opacity: 1; }
+  }
+  
+  &.second-five .second {
+    .pip.one, .pip.three, .pip.five, .pip.seven, .pip.nine { opacity: 1; }
+  }
+  
+  .pip {
+    background-color: white;
+    width: calc(1em / 7);
+    height: calc(1em / 7);
+    display: block;
+    border-radius: calc(1em / 7);
+    position: absolute;
+    opacity: 0;
+    
+    &.one {
+      top: calc(1em / 7);
+      left: calc(1em / 7);
+    }
+    
+    &.two {
+      top: calc(1em / 7);
+      left: calc(3em / 7);
+    }
+    
+    &.three {
+      top: calc(1em / 7);
+      left: calc(5em / 7);
+    }
+    
+    &.four {
+      top: calc(3em / 7);
+      left: calc(1em / 7);
+    }
+    
+    &.five {
+      top: calc(3em / 7);
+      left: calc(3em / 7);
+    }
+    
+    &.six {
+      top: calc(3em / 7);
+      left: calc(5em / 7);
+    }
+    
+    &.seven {
+      top: calc(5em / 7);
+      left: calc(1em / 7);
+    }
+    
+    &.eight {
+      top: calc(5em / 7);
+      left: calc(3em / 7);
+    }
+    
+    &.nine {
+      top: calc(5em / 7);
+      left: calc(5em / 7);
+    }
+  }
+}
+
+*/
+
+html {
+  font-size: 100px;
+}
+
+.domino {
+  background-color: black;
+  width: 1em;
+  height: 2em;
+  position: relative;
+}
+.domino .first, .domino .second {
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  border: 1px solid white;
+}
+.domino.vertical {
+  width: 1em;
+  height: 2em;
+}
+.domino.vertical .second {
+  top: 1em;
+}
+.domino.horizontal {
+  width: 2em;
+  height: 1em;
+}
+.domino.horizontal .second {
+  left: 1em;
+}
+.domino.horizontal .second {
+  left: 1em;
+}
+.domino.horizontal.first-two .first .pip.two, .domino.horizontal.first-two .first .pip.eight {
+  opacity: 1;
+}
+.domino.horizontal.first-three .first .pip.three, .domino.horizontal.first-three .first .pip.five, .domino.horizontal.first-three .first .pip.seven {
+  opacity: 1;
+}
+.domino.horizontal.first-six .first .pip.one, .domino.horizontal.first-six .first .pip.two, .domino.horizontal.first-six .first .pip.three, .domino.horizontal.first-six .first .pip.seven, .domino.horizontal.first-six .first .pip.eight, .domino.horizontal.first-six .first .pip.nine {
+  opacity: 1;
+}
+.domino.horizontal.second-two .second .pip.two, .domino.horizontal.second-two .second .pip.eight {
+  opacity: 1;
+}
+.domino.horizontal.second-three .second .pip.three, .domino.horizontal.second-three .second .pip.five, .domino.horizontal.second-three .second .pip.seven {
+  opacity: 1;
+}
+.domino.horizontal.second-six .second .pip.one, .domino.horizontal.second-six .second .pip.two, .domino.horizontal.second-six .second .pip.three, .domino.horizontal.second-six .second .pip.seven, .domino.horizontal.second-six .second .pip.eight, .domino.horizontal.second-six .second .pip.nine {
+  opacity: 1;
+}
+.domino.vertical.first-two .first .pip.four, .domino.vertical.first-two .first .pip.six {
+  opacity: 1;
+}
+.domino.vertical.first-three .first .pip.one, .domino.vertical.first-three .first .pip.five, .domino.vertical.first-three .first .pip.nine {
+  opacity: 1;
+}
+.domino.vertical.first-six .first .pip.one, .domino.vertical.first-six .first .pip.three, .domino.vertical.first-six .first .pip.four, .domino.vertical.first-six .first .pip.six, .domino.vertical.first-six .first .pip.seven, .domino.vertical.first-six .first .pip.nine {
+  opacity: 1;
+}
+.domino.vertical.second-two .second .pip.four, .domino.vertical.second-two .second .pip.six {
+  opacity: 1;
+}
+.domino.vertical.second-three .second .pip.one, .domino.vertical.second-three .second .pip.five, .domino.vertical.second-three .second .pip.nine {
+  opacity: 1;
+}
+.domino.vertical.second-six .second .pip.one, .domino.vertical.second-six .second .pip.three, .domino.vertical.second-six .second .pip.four, .domino.vertical.second-six .second .pip.six, .domino.vertical.second-six .second .pip.seven, .domino.vertical.second-six .second .pip.nine {
+  opacity: 1;
+}
+.domino.first-one .first .pip.five {
+  opacity: 1;
+}
+.domino.first-four .first .pip.one, .domino.first-four .first .pip.three, .domino.first-four .first .pip.seven, .domino.first-four .first .pip.nine {
+  opacity: 1;
+}
+.domino.first-five .first .pip.one, .domino.first-five .first .pip.three, .domino.first-five .first .pip.five, .domino.first-five .first .pip.seven, .domino.first-five .first .pip.nine {
+  opacity: 1;
+}
+.domino.second-one .second .pip.five {
+  opacity: 1;
+}
+.domino.second-four .second .pip.one, .domino.second-four .second .pip.three, .domino.second-four .second .pip.seven, .domino.second-four .second .pip.nine {
+  opacity: 1;
+}
+.domino.second-five .second .pip.one, .domino.second-five .second .pip.three, .domino.second-five .second .pip.five, .domino.second-five .second .pip.seven, .domino.second-five .second .pip.nine {
+  opacity: 1;
+}
+.domino .pip {
+  background-color: white;
+  width: calc(1em / 7);
+  height: calc(1em / 7);
+  display: block;
+  border-radius: calc(1em / 7);
+  position: absolute;
+  opacity: 0;
+}
+.domino .pip.one {
+  top: calc(1em / 7);
+  left: calc(1em / 7);
+}
+.domino .pip.two {
+  top: calc(1em / 7);
+  left: calc(3em / 7);
+}
+.domino .pip.three {
+  top: calc(1em / 7);
+  left: calc(5em / 7);
+}
+.domino .pip.four {
+  top: calc(3em / 7);
+  left: calc(1em / 7);
+}
+.domino .pip.five {
+  top: calc(3em / 7);
+  left: calc(3em / 7);
+}
+.domino .pip.six {
+  top: calc(3em / 7);
+  left: calc(5em / 7);
+}
+.domino .pip.seven {
+  top: calc(5em / 7);
+  left: calc(1em / 7);
+}
+.domino .pip.eight {
+  top: calc(5em / 7);
+  left: calc(3em / 7);
+}
+.domino .pip.nine {
+  top: calc(5em / 7);
+  left: calc(5em / 7);
+}
+
+		</style>
+		<script>
+			window.onload = function() {
+				let types = ["one", "two", "three", "four", "five", "six"];
+				let directions = ["horizontal", "vertical"];
+				for (var k = 0; k < directions.length; k++) {
+				for (var i = 0; i < types.length; i++) {
+					for (var j = 0; j < types.length; j++) {
+						document.body.innerHTML += `<div class="domino ${directions[k]} first-${types[i]} second-${types[j]}">
+			<div class="first">
+				<span class="pip one"></span>
+				<span class="pip two"></span>
+				<span class="pip three"></span>
+				<span class="pip four"></span>
+				<span class="pip five"></span>
+				<span class="pip six"></span>
+				<span class="pip seven"></span>
+				<span class="pip eight"></span>
+				<span class="pip nine"></span>
+			</div>
+			<div class="second">
+				<span class="pip one"></span>
+				<span class="pip two"></span>
+				<span class="pip three"></span>
+				<span class="pip four"></span>
+				<span class="pip five"></span>
+				<span class="pip six"></span>
+				<span class="pip seven"></span>
+				<span class="pip eight"></span>
+				<span class="pip nine"></span>
+			</div>
+`;
+					}
+				}
+			}
+		}
+		</script>
 	</head>
 	<body>
+
+		</div>
 	</body>
 </html>
